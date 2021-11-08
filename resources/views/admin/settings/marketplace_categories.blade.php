@@ -1,6 +1,6 @@
 @extends('admin.master')
 
-@section('title', 'Marketplace Categories')
+@section('title', 'Categories')
 
 @section('content')
 
