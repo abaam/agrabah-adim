@@ -114,3 +114,6 @@
         <li class="{{ (request()->is('bfar*')) ? 'active' : '' }}"><a href="{!! route('bfar-settings') !!}">BFAR</a></li>
     </ul>
 </li>
+<li class="{{ (request()->is('reports*')) ? 'active' : '' }}">
+    <a href="{!! route('reports') !!}"><i class="fa fa-table"></i> <span class="nav-label">Wharf Reports</span></a>
+</li>
