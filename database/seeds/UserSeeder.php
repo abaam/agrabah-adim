@@ -127,6 +127,28 @@ class UserSeeder extends Seeder
             $setting->display_name = 'Next Bid Minimum';
             $setting->value = 5;
             $setting->save();
+
+            $categories = [
+                'Seafood', 'Seaweed','Livestock','Pork','Poultry', 'Fruits', 'Vegetables', 'Highland', 'Lowland', 'Flowers and Plants'
+            ];
+            $parents = [];
+            $parents['Pork'] = 3;
+            $parents['Highland'] = 7;
+            $parents['Lowland'] = 7;
+            foreach($categories as $category){
+                $setting = new \App\MarketplaceCategories();
+                if(array_key_exists($category, $parents)){
+                    $setting->parent_id = $parents[$category];
+                }
+                $setting->name = stringSlug($category);
+                $setting->display_name = $category;
+                $setting->save();
+            }
+
+
+
+
+
         }
 
     }
