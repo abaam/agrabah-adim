@@ -63,7 +63,9 @@ class UserSeeder extends Seeder
             'Community Leader',
             'Farmer',
             'Loan Provider',
-            'Borrower'
+            'Borrower',
+            'BFAR',
+            'Enterprise Client'
         );
 
         foreach($roles as $role) {
@@ -110,30 +112,44 @@ class UserSeeder extends Seeder
             $setting = new Settings();
             $setting->name = stringSlug('BFAR');
             $setting->display_name = 'BFAR';
+            $setting->value = 'bfar';
+            $setting->is_active = 1;
             $setting->save();
-        }
 
-//        $user = new User();
-//        $user->name = 'Master Farmer';
-//        $user->email = 'masterfarmer@gmail.com';
-//        $user->password = bcrypt('agrabah');
-//        $user->passkey = 'agrabah';
-//        $user->active = 1;
-//        if($user->save()) {
-//            $profile = new Profile();
-//            $profile->first_name = 'Master';
-//            $profile->last_name = 'Farmer';
-//            if($profile->save()){
-//                $number = str_pad(MasterFarmer::count() + 1, 5, 0, STR_PAD_LEFT);
-//                $master = new MasterFarmer();
-//                $master->account_id = $number;
-//                $master->user_id = $user->id;
-//                $master->profile_id = $profile->id;
-//                $master->save();
-//            }
-//            $user->assignRole(stringSlug('Master Farmer'));
-//            $user->markEmailAsVerified();
-//        }
+            $setting = new Settings();
+            $setting->name = 'service_fee_percentage';
+            $setting->display_name = 'Server Fee Percentage';
+            $setting->value = 5.25;
+            $setting->save();
+
+            $setting = new Settings();
+            $setting->name = 'spot_market_next_bid';
+            $setting->display_name = 'Next Bid Minimum';
+            $setting->value = 5;
+            $setting->save();
+
+            $categories = [
+                'Seafood', 'Seaweed','Livestock','Pork','Poultry', 'Fruits', 'Vegetables', 'Highland', 'Lowland', 'Flowers and Plants'
+            ];
+            $parents = [];
+            $parents['Pork'] = 3;
+            $parents['Highland'] = 7;
+            $parents['Lowland'] = 7;
+            foreach($categories as $category){
+                $setting = new \App\MarketplaceCategories();
+                if(array_key_exists($category, $parents)){
+                    $setting->parent_id = $parents[$category];
+                }
+                $setting->name = stringSlug($category);
+                $setting->display_name = $category;
+                $setting->save();
+            }
+
+
+
+
+
+        }
 
     }
 }

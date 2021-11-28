@@ -107,6 +107,8 @@ Route::middleware(['auth', 'verified', 'has_profile'])->group(function () {
     Route::get('market-place-show/{id}', 'MarketplaceController@show')->name('market-place-show');
 
 
+    Route::get('reports', 'ReportController@index')->name('reports');
+
 });
 // GLOBAL ROUTES END
 

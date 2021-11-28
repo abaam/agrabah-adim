@@ -12,12 +12,21 @@ class LoanTypeSeeder extends Seeder
     public function run()
     {
         $types = array(
-            'Short Loan',
-            'Long Term Loan',
-            'PO Financing',
-            'Equipment Loan',
+//            'Short Loan',
+//            'Long Term Loan',
+//            'PO Financing',
+//            'Equipment Loan',
+//            'Crop Insurance',
+//            'Trade Insurance',
+            'Short term loan',
+            'Long term loan',
+            'Equipment loan',
+            'Vehicle loan',
+            'Educational loan',
             'Crop Insurance',
-            'Trade Insurance',
+            'Life Insurance',
+            'Health Insurance',
+            'Bank Account Opening',
         );
 
         foreach($types as $type) {

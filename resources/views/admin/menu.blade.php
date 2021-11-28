@@ -108,9 +108,12 @@
         <li class="{{ (request()->is('settings*')) ? 'active' : '' }}"><a href="{!! route('settings.index') !!}">Custom Settings</a></li>
     </ul>
     <ul class="nav nav-second-level collapse">
-        <li class="{{ (request()->is('marketplace-categories*')) ? 'active' : '' }}"><a href="{!! route('marketplace-categories.index') !!}">Marketplace Categories</a></li>
+        <li class="{{ (request()->is('marketplace-categories*')) ? 'active' : '' }}"><a href="{!! route('marketplace-categories.index') !!}">Categories</a></li>
     </ul>
     <ul class="nav nav-second-level collapse">
         <li class="{{ (request()->is('bfar*')) ? 'active' : '' }}"><a href="{!! route('bfar-settings') !!}">BFAR</a></li>
     </ul>
+</li>
+<li class="{{ (request()->is('reports*')) ? 'active' : '' }}">
+    <a href="{!! route('reports') !!}"><i class="fa fa-table"></i> <span class="nav-label">Wharf Reports</span></a>
 </li>
